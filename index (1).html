@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2a418e;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: #113198;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        h1, h2 {
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 2.5em;
+        }
+
+        h2 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="email"], input[type="tel"], textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-size: 1em;
+            width: 100%;
+        }
+
+        button {
+            background-color: #0a07a2;
+            color: #ffffff;
+            border: none;
+            padding: 10px 15px;
+            text-align: center;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #385e89;
+        }
+
+        .education-item, .work-experience-item, .achievement-item, .reference-item {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .education-item button, .work-experience-item button, .achievement-item button, .reference-item button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .education-item button:hover, .work-experience-item button:hover, .achievement-item button:hover, .reference-item button:hover {
+            background-color: #c0392b;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        footer {
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            border-top: 1px solid #ddd;
+        }
+
+        .hidden {
+            display: none;
+        }
+        #preview {
+            display: none;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ddd;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Resume Builder</h1>
+    </header>
+    <main>
+        <section id="personal-info">
+            <h2>Personal Information</h2>
+            <form id="personal-info-form">
+                <label for="full-name">Full Name:</label>
+                <input type="text" id="full-name" name="full-name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" required>
+                <div id="profile-photo">
+                    <label for="photo">Profile Photo:</label>
+                    <input type="file" id="photo" name="photo">
+                    <img id="preview" src="#" alt="Your profile photo will appear here" style="display: none;">
+                </div>
+            </form>
+        </section>
+
+        <section id="education">
+            <h2><i class="fas fa-book"></i> Education</h2>
+            <button id="add-education">Add Education</button>
+            <div id="education-list">
+            </div>
+        </section>
+
+        <section id="work-experience">
+            <h2><i class="fas fa-laptop-code"></i> Work Experience</h2>
+            <button id="add-work-experience">Add Work Experience</button>
+            <div id="work-experience-list">
+            </div>
+        </section>
+        <section id="skills">
+            <h2>Skills</h2>
+            <div id="skills-options">
+                <label><input type="checkbox" value="JavaScript"> JavaScript</label>
+                <label><input type="checkbox" value="Python"> Python</label>
+                <label><input type="checkbox" value="Java"> Java</label>
+                <label><input type="checkbox" value="C++"> C++</label>
+                <label><input type="checkbox" value="HTML"> HTML</label>
+                <label><input type="checkbox" value="CSS"> CSS</label>
+                <label><input type="checkbox" value="React"> React</label>
+                <label><input type="checkbox" value="Node.js"> Node.js</label>
+                <label><input type="checkbox" value="Angular"> Angular</label>
+                <label><input type="checkbox" value="Vue.js"> Vue.js</label>
+                <label><input type="checkbox" value="SQL"> SQL</label>
+                <label><input type="checkbox" value="NoSQL"> NoSQL</label>
+                <label><input type="checkbox" value="Ruby on Rails"> Ruby on Rails</label>
+                <label><input type="checkbox" value="Django"> Django</label>
+                <label><input type="checkbox" value="Flask"> Flask</label>
+                <label><input type="checkbox" value="Spring"> Spring</label>
+                <label><input type="checkbox" value="Git"> Git</label>
+                <label><input type="checkbox" value="Docker"> Docker</label>
+                <label><input type="checkbox" value="Kubernetes"> Kubernetes</label>
+                <label><input type="checkbox" value="AWS"> AWS</label>
+                <label><input type="checkbox" value="Azure"> Azure</label>
+                <label><input type="checkbox" value="GCP"> GCP</label>
+                <label><input type="checkbox" value="Machine Learning"> Machine Learning</label>
+                <label><input type="checkbox" value="Data Science"> Data Science</label>
+                <label><input type="checkbox" value="Artificial Intelligence"> Artificial Intelligence</label>
+                <label><input type="checkbox" value="DevOps"> DevOps</label>
+                <label><input type="checkbox" value="Agile"> Agile</label>
+                <label><input type="checkbox" value="Scrum"> Scrum</label>
+                <label><input type="checkbox" value="Project Management"> Project Management</label>
+                <label><input type="checkbox" value="UI/UX Design"> UI/UX Design</label>
+                <label><input type="checkbox" value="Cybersecurity"> Cybersecurity</label>
+                <label><input type="checkbox" value="Blockchain"> Blockchain</label>
+                <label><input type="checkbox" value="Internet of Things (IoT)"> Internet of Things (IoT)</label>
+            </div>
+            <ul id="skills-list">
+            </ul>
+        </section>
+        
+        <section id="achievements">
+            <h2><i class="fas fa-trophy"></i> Achievements</h2>
+            <button id="add-achievement">Add Achievement</button>
+            <div id="achievements-list">
+            </div>
+        </section>
+
+        <section id="references">
+            <h2>References</h2>
+            <button id="add-reference">Add Reference</button>
+            <div id="references-list">
+            </div>
+        </section>
+
+        <button id="generate-resume">Generate Resume</button>
+    </main>
+
+    <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    if (!localStorage.getItem('username')) {
+        alert('You need to log in to access the resume builder.');
+        window.location.href = 'login.html';
+        return;
+    }
+    const photoInput = document.getElementById('photo');
+    const preview = document.getElementById('preview');
+
+    photoInput.addEventListener('change', function() {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.setAttribute('src', e.target.result);
+                preview.style.display = 'block';
+                sessionStorage.setItem('profilePhoto', e.target.result); // Save to sessionStorage
+            }
+            reader.readAsDataURL(file);
+        } else {
+            preview.style.display = 'none';
+            sessionStorage.removeItem('profilePhoto'); // Remove if no file is selected
+        }
+    });
+    const addEducationBtn = document.getElementById('add-education');
+    const educationList = document.getElementById('education-list');
+    
+    addEducationBtn.addEventListener('click', function() {
+        const educationItem = document.createElement('div');
+        educationItem.classList.add('education-item');
+        educationItem.innerHTML = `
+            <div>
+                <label for="education-school">School/University:</label>
+                <input type="text" class="education-school" name="education-school" required>
+                <label for="education-degree">Degree:</label>
+                <input type="text" class="education-degree" name="education-degree" required>
+                <label for="education-year">Year:</label>
+                <input type="text" class="education-year" name="education-year" required>
+            </div>
+            <button type="button" class="remove-btn">Remove</button>
+        `;
+        educationList.appendChild(educationItem);
+        const removeBtn = educationItem.querySelector('.remove-btn');
+        removeBtn.addEventListener('click', function() {
+            educationItem.remove();
+        });
+    });
+    const addWorkExperienceBtn = document.getElementById('add-work-experience');
+    const workExperienceList = document.getElementById('work-experience-list');
+    
+    addWorkExperienceBtn.addEventListener('click', function() {
+        const workExperienceItem = document.createElement('div');
+        workExperienceItem.classList.add('work-experience-item');
+        workExperienceItem.innerHTML = `
+            <div>
+                <label for="work-position">Position:</label>
+                <input type="text" class="work-position" name="work-position" required>
+                <label for="work-company">Company:</label>
+                <input type="text" class="work-company" name="work-company" required>
+                <label for="work-year">Year:</label>
+                <input type="text" class="work-year" name="work-year" required>
+            </div>
+            <button type="button" class="remove-btn">Remove</button>
+        `;
+        workExperienceList.appendChild(workExperienceItem);
+        const removeBtn = workExperienceItem.querySelector('.remove-btn');
+        removeBtn.addEventListener('click', function() {
+            workExperienceItem.remove();
+        });
+    });
+    const addAchievementBtn = document.getElementById('add-achievement');
+    const achievementsList = document.getElementById('achievements-list');
+
+    addAchievementBtn.addEventListener('click', function() {
+        const achievementItem = document.createElement('div');
+        achievementItem.classList.add('achievement-item');
+        achievementItem.innerHTML = `
+            <div>
+                <label for="achievement-description">Description:</label>
+                <textarea class="achievement-description" name="achievement-description" rows="2" required></textarea>
+            </div>
+            <button type="button" class="remove-btn">Remove</button>
+        `;
+        achievementsList.appendChild(achievementItem);
+        const removeBtn = achievementItem.querySelector('.remove-btn');
+        removeBtn.addEventListener('click', function() {
+            achievementItem.remove();
+        });
+    });
+    const addReferenceBtn = document.getElementById('add-reference');
+    const referencesList = document.getElementById('references-list');
+    
+    addReferenceBtn.addEventListener('click', function() {
+        const referenceItem = document.createElement('div');
+        referenceItem.classList.add('reference-item');
+        referenceItem.innerHTML = `
+            <div>
+                <label for="reference-name">Name:</label>
+                <input type="text" class="reference-name" name="reference-name" required>
+                <label for="reference-contact">Contact:</label>
+                <input type="text" class="reference-contact" name="reference-contact" required>
+            </div>
+            <button type="button" class="remove-btn">Remove</button>
+        `;
+        referencesList.appendChild(referenceItem);
+        const removeBtn = referenceItem.querySelector('.remove-btn');
+        removeBtn.addEventListener('click', function() {
+            referenceItem.remove();
+        });
+    });
+    const skillsOptions = document.querySelectorAll('#skills-options input[type="checkbox"]');
+    const skillsList = document.getElementById('skills-list');
+
+    skillsOptions.forEach(option => {
+        option.addEventListener('change', function() {
+            if (this.checked) {
+                const skillItem = document.createElement('li');
+                skillItem.textContent = this.value;
+                skillItem.dataset.skill = this.value;
+                skillsList.appendChild(skillItem);
+            } else {
+                const skillItem = skillsList.querySelector(`li[data-skill="${this.value}"]`);
+                if (skillItem) {
+                    skillsList.removeChild(skillItem);
+                }
+            }
+        });
+    });
+    const generateResumeBtn = document.getElementById('generate-resume');
+    generateResumeBtn.addEventListener('click', function() {
+        const fullName = document.getElementById('full-name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const educationItems = Array.from(document.getElementsByClassName('education-item')).map(item => ({
+            school: item.querySelector('.education-school').value,
+            degree: item.querySelector('.education-degree').value,
+            year: item.querySelector('.education-year').value
+        }));
+        const workExperienceItems = Array.from(document.getElementsByClassName('work-experience-item')).map(item => ({
+            position: item.querySelector('.work-position').value,
+            company: item.querySelector('.work-company').value,
+            year: item.querySelector('.work-year').value
+        }));
+        const skills = Array.from(document.querySelectorAll('#skills-list li')).map(item => item.textContent);
+        const achievementItems = Array.from(document.getElementsByClassName('achievement-item')).map(item => ({
+            description: item.querySelector('.achievement-description').value
+        }));
+        const referenceItems = Array.from(document.getElementsByClassName('reference-item')).map(item => ({
+            name: item.querySelector('.reference-name').value,
+            contact: item.querySelector('.reference-contact').value
+        }));
+        const profilePhoto = sessionStorage.getItem('profilePhoto');
+        const url = new URL('resume.html', window.location.href);
+        url.searchParams.append('fullName', fullName);
+        url.searchParams.append('email', email);
+        url.searchParams.append('phone', phone);
+        url.searchParams.append('education', JSON.stringify(educationItems));
+        url.searchParams.append('workExperience', JSON.stringify(workExperienceItems));
+        url.searchParams.append('skills', JSON.stringify(skills));
+        url.searchParams.append('achievements', JSON.stringify(achievementItems));
+        url.searchParams.append('references', JSON.stringify(referenceItems));
+        if (profilePhoto) {
+            url.searchParams.append('profilePhoto', profilePhoto);
+        }
+        window.location.href = url.toString();
+    });
+});
+    </script>
+</body>
+</html>
